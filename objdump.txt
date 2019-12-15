@@ -1,0 +1,1 @@
+objdump -D -b binary test.bin -m i8086
