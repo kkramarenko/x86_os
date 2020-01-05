@@ -24,3 +24,24 @@ debug:
 clean:
 		rm -rf *.o *.bin *.img *.dbg
 
+boot.bin:  boot2.bin kernel.bin boot.o 
+		ld --oformat binary -o boot.bin  -T boot.ld  boot.o
+		ld  -o boot.dbg  -T boot.ld  boot.o
+
+boot2.bin: boot2.o 
+		ld --oformat binary -o boot2.bin  -T boot2.ld  boot2.o
+		ld  -o boot2.dbg  -T boot2.ld  boot2.o
+
+kernel.bin: kernel.o
+		ld --oformat binary -o kernel.bin -T kernel.ld kernel.o
+		ld -o kernel.dbg -T kernel.ld kernel.o
+
+boot.o: boot.asm boot2.o kernel.o
+		nasm -f elf64 -F dwarf -g -o boot.o boot.asm
+
+boot2.o: boot2.asm
+		nasm -f elf64 -F dwarf -g -o boot2.o boot2.asm
+
+kernel.o: kernel.asm
+		nasm -f elf64 -F dwarf -g -o kernel.o kernel.asm
+

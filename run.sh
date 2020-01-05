@@ -1,2 +1,2 @@
 #!/bin/bash
-qemu-system-x86_64 test.bin -nographic -curses
+qemu-system-x86_64 boot.bin -nographic -curses -s -S
