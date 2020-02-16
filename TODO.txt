@@ -1,1 +1,4 @@
 1.Make clock works correctly.
+3. ATA driver doesn't read all sectors every execution.
+4. Makefile more universal.
+5. Write some tests.

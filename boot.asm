@@ -1,4 +1,7 @@
 [bits 16]
+
+%include "constants.inc"
+
 ; BIOS load boot device code in DL register
 first_stage:
   mov ax, cs
@@ -72,15 +75,12 @@ hello_string db 'First stage bootloader', 0
 HELLO_STRLEN equ $ - hello_string
 boot_device db 0
 SPACE equ ' '
-SYMBOL_ATTRIBUTE equ 0x0f
 stack_top dw 0x7bff
-VIDEO_BUFFER equ 0xb8000
-SCREEN_SIZE equ 80 * 25
-SECOND_STAGE_BASE equ 0x500
+SECOND_STAGE_BASE equ 0x7e00
 
 times 510 - ($ - $$) db 0
 dw 0xAA55
-start2:
-  incbin "boot2.bin"
-  incbin "kernel.bin"
+;start2:
+;  incbin "boot2.bin"
+;  incbin "kernel.bin"
 

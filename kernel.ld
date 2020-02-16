@@ -4,6 +4,7 @@ SECTIONS
 	.text :
 	{
 		__start = .;
-		*(.text)
+		kernel.o(.text)
+    virtual_memory.o(.text)
 	}
 }

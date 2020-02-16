@@ -5,5 +5,5 @@ SECTIONS
 	{
 		__start = .;
 		*(.text)
-	}
+	}  
 }
